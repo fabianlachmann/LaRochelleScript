@@ -1,5 +1,5 @@
-import math
 import csv
+import math
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 #Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen -> fixen
