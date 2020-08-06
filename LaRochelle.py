@@ -2,7 +2,7 @@ import math
 import csv
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-#Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen -> fixen
+#Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen
 
 
 Tk().withdraw()
@@ -47,7 +47,7 @@ with open(directory) as csv_file:#öffnet das csv-file
         line_count += 1
 
         if stunde != int(row[5]):
-            # stunde + tag*24 + anz_stunden <= int(row[5]) + int(row[4])*24 ) or ( monat < int(row[3]) and (stunde + anz_stunden)%24 <= int(row[5])
+
             avg_messungszeit = messungszeit/(line_count)
             avg_flowrate = flowrate/(line_count)
 
