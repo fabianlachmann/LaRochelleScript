@@ -2,7 +2,7 @@ import csv
 import math
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-#Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen -> fixen
+#Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen
 
 
 Tk().withdraw()
@@ -47,7 +47,7 @@ with open(directory) as csv_file:#öffnet das csv-file
         line_count += 1
 
         if stunde != int(row[5]):
-            # stunde + tag*24 + anz_stunden <= int(row[5]) + int(row[4])*24 ) or ( monat < int(row[3]) and (stunde + anz_stunden)%24 <= int(row[5])
+
             avg_messungszeit = messungszeit/(line_count)
             avg_flowrate = flowrate/(line_count)
 
@@ -65,7 +65,7 @@ with open(directory) as csv_file:#öffnet das csv-file
 
 
             for i in range(len(werte)):
-                mittelwerte[i+3]= (werte[i]/(line_count))*avg_flowrate*avg_messungszeit
+                mittelwerte[i+3]= (werte[i]/(line_count))*avg_messungszeit
                 werte[i] = 0 # für nächste Stunde
 
             with open(output, mode='a',newline='') as resultate: #a steht für append
@@ -77,10 +77,10 @@ with open(directory) as csv_file:#öffnet das csv-file
 
 
         for i in range(len(werte)): # Werten der row werden in die liste addiert und für flowrate und messungszeit korriegiert
-            if (float(row[24])*float(row[25])) == 0:
+            if (float(row[25])) == 0:
                 continue
 
-            werte[i] += int(row[8+i]) / (float(row[24])*float(row[25]))
+            werte[i] += int(row[8+i]) / (float(row[25]))
 
 
         messungszeit += float(row[24])
@@ -107,7 +107,7 @@ with open(directory) as csv_file:#öffnet das csv-file
         mittelwerte[2] = stunde
 
         for i in range(len(werte)):
-            mittelwerte[i+3]= (werte[i]/line_count)*avg_messungszeit*avg_flowrate
+            mittelwerte[i+3]= (werte[i]/line_count)*avg_messungszeit
 
 
         with open(output,mode='a',newline='') as resultate:
