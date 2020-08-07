@@ -12,10 +12,10 @@ Tk().withdraw()
 Mittelwerte = askopenfilename()
 #Positionen=askopenfilename()
 
-#Deklariert 2D-Array für alle Zeitcodes in Messungen und Daten in Messungen
-ZeitM = []
-DatenM = []
-
+#Deklariert 2D-Array für alle Zeitcodes in Mittelwerte und Daten in Mittelwerteq
+ZeitM = [] #Monat, Tag, Stunde
+DatenMfinal = [] #Monat, Tag
+DatenM = [] #Monat, Tag mit duplikaten
 #Ordnet alle verfügbaren Zeicodes in Liste ZeitM ein
 
 
@@ -26,17 +26,33 @@ with open(Mittelwerte) as csv_file:  # öffnet das gemittelte csv-file mit den L
         Zeit1HM = row[:3]
         ZeitM.append(Zeit1HM)
 
+    DatenM.append(ZeitM[0][:2])
+    for rowZeitM in ZeitM:  # Ruft die ersten Zwei Einträge des Timestamp arrays auf: Datum
+        Datum = rowZeitM[:2]
+        for i in range(len(DatenM)):  # Checkt ob sich das Datum im DatenM array befindet
 
-
-    for row in ZeitM: #Ruft die ersten Zwei Einträge des Timestamp arrays auf: Datum
-        Datum = row[:2]
-        for row in DatenM: #Checkt ob sich das Datum im DatenM array befindet
-
-            if Datum == row:
+            if Datum == DatenM[i]:
                 continue
             else:
                 DatenM.append(Datum)
                 break
+    #print(DatenM)
+    DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
 
-    print(DatenM)
+    DatenMsortedList = [list(elem) for elem in DatenMsortedTuple] #Konvertiert die Liste aus Tupeln in eine Nested list
+    #print(DatenMsortedList)
+
+
+    for element in DatenMsortedList: #Reorganisiert die Nested List in Monat, Tag Format
+        a = element[1]
+        b = element[0]
+        OrderedDate = [a,b]
+        DatenMfinal.append(OrderedDate)
+    print(DatenMfinal)
+
+
+
+
+
+
 
