@@ -2,15 +2,41 @@ import urllib.request
 import csv
 
 def Glassgow_Fetch(DatenM):
-    ocol:csv'
 
     for i in DatenM:
         Month = i[0]
         Day = i[1]
         Hour = i[2]
 
-        if Hour = 24:
+        Monthadd = Month
+        Dayadd = Day
+        Houradd = Hour + 1
 
+
+        if Hour == 23:
+            Dayadd = Day + 1
+            Houradd = 0
+
+        if Month == 6 and Day == 30 and Hour == 23:
+            Monthadd == Month + 1
+            Dayadd == 1
+            Houradd == 0
+        if Month == 7 and Day == 31 and Hour == 23:
+            Monthadd == Month + 1
+            Dayadd == 1
+            Houradd == 0
+        if Month == 8 and Day == 31 and Hour == 23:
+            Monthadd == Month + 1
+            Dayadd == 1
+            Houradd == 0
+        if Month == 9 and Day == 30 and Hour == 23:
+            Monthadd == Month + 1
+            Dayadd == 1
+            Houradd == 0
+        if Month == 10 and Day == 31 and Hour == 23:
+            Monthadd == Month + 1
+            Dayadd == 1
+            Houradd == 0
 
 
 
