@@ -25,7 +25,7 @@ def Reykjavik_Fetch():
         csv_reader = csv.reader(csv_file, delimiter=',')  # initialisiert den Reader fürs csv
 
         for row in csv_reader:
-            Zeit = row[:2]
+            Zeit = row[:3]
             DatenM.append(Zeit)
 
 
@@ -43,7 +43,7 @@ def Reykjavik_Fetch():
             DatenMfinal.append(OrderedDate)
         print(DatenMfinal)
 
-        return #?
+        return
 
 
 
