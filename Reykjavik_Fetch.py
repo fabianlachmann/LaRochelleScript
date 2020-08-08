@@ -19,14 +19,14 @@ import itertools
 #    DatenMfinal.append(OrderedDate)
 # print(DatenMfinal)
 
-def Reykjavik_Fetch():
+def Reykjavik_Fetch(input):
 
     Tk().withdraw()
 
     # Mittelwerte sind der Output aus LaRochelle Script. Positionen sind der Output aus Glasgow script, mit dem selben
     # timecode wie LaRochelle
 
-    Mittelwerte = askopenfilename()
+    Mittelwerte = input
     #Positionen=askopenfilename()
 
     #Deklariert 2D-Array für alle Zeitcodes in Mittelwerte und Daten in Mittelwerteq
