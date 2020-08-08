@@ -90,9 +90,6 @@ def LaRochelle():
 
 
 
-
-
-
         # das folgende ist nötig, weil die letzte Stunde nicht durch den loop oben abgedeckt wird
         if line_count != 0:
             avg_messungszeit = messungszeit/line_count
