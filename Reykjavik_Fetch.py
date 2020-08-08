@@ -23,19 +23,10 @@ with open(Mittelwerte) as csv_file:  # öffnet das gemittelte csv-file mit den L
     csv_reader = csv.reader(csv_file, delimiter=',')  # initialisiert den Reader fürs csv
 
     for row in csv_reader:
-        Zeit1HM = row[:3]
-        ZeitM.append(Zeit1HM)
+        Zeit = row[:2]
+        DatenM.append(Zeit)
 
-    DatenM.append(ZeitM[0][:2])
-    for rowZeitM in ZeitM:  # Ruft die ersten Zwei Einträge des Timestamp arrays auf: Datum
-        Datum = rowZeitM[:2]
-        for i in range(len(DatenM)):  # Checkt ob sich das Datum im DatenM array befindet
 
-            if Datum == DatenM[i]:
-                continue
-            else:
-                DatenM.append(Datum)
-                break
     #print(DatenM)
     DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
 
