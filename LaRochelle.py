@@ -5,12 +5,12 @@ from tkinter.filedialog import askopenfilename
 #Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen
 
 
-def LaRochelle():
+def LaRochelle(directory,output):
     Tk().withdraw()
 
     # Zuerst wird nach der zu mittelenden Datei und dann nach der Output-location gefragt.
-    directory = askopenfilename()
-    output = askopenfilename()
+    #directory = askopenfilename()
+    #output = askopenfilename()
 
     #Station,Timestamp,Year,Month,Day,Hour,Min,Sec,
     #0.46um,0.66um,0.89um,1.15um,1.45um,1.85um,2.55um,3.5um,4.5um,5.75um,7.25um,9um,11um,13um,15um,16.5um,DurationSample_s,FlowRate_ml/s
@@ -114,5 +114,5 @@ def LaRochelle():
 
             print(mittelwerte)
 
-    return #?
+    return 1
 
