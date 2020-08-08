@@ -18,33 +18,29 @@ def Glasgow_Fetch(DatenM):
                 Monthadd = Month + 1
                 Dayadd = 1
                 Houradd = 0
-            else:
-                continue
 
-            if Month == 7 and Day == 31 and Hour == 23:
+            elif Month == 7 and Day == 31 and Hour == 23:
                 Monthadd = Month + 1
                 Dayadd = 1
                 Houradd = 0
-            else: continue
 
-            if Month == 8 and Day == 31 and Hour == 23:
+            elif Month == 8 and Day == 31 and Hour == 23:
                 Monthadd = Month + 1
                 Dayadd = 1
                 Houradd = 0
-            else:
-                continue
 
-            if Month == 9 and Day == 30 and Hour == 23:
+
+            elif Month == 9 and Day == 30 and Hour == 23:
                 Monthadd = Month + 1
                 Dayadd = 1
                 Houradd = 0
-            else:
-                continue
 
-            if Month == 10 and Day == 31 and Hour == 23:
+
+            elif Month == 10 and Day == 31 and Hour == 23:
                 Monthadd = Month + 1
                 Dayadd = 1
                 Houradd = 0
+
             else:
                 Houradd = 0
                 Dayadd = Day + 1
@@ -53,6 +49,8 @@ def Glasgow_Fetch(DatenM):
             Houradd = Hour + 1
             Dayadd = Day
             Monthadd = Month
+
+
         url = 'https://services.marinetraffic.com/api/exportvesseltrack/b07448715b200b24ccc79909b6cf721ba0f55d3d/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
