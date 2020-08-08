@@ -4,6 +4,21 @@ from tkinter.filedialog import askopenfilename
 import itertools
 #yeet
 
+
+# print(DatenM)
+# DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
+
+# DatenMsortedList = [list(elem) for elem in DatenMsortedTuple] #Konvertiert die Liste aus Tupeln in eine Nested list
+# print(DatenMsortedList)
+
+
+# for element in DatenMsortedList: #Reorganisiert die Nested List in Monat, Tag Format
+#    a = element[1]
+#    b = element[0]
+#    OrderedDate = [a,b]
+#    DatenMfinal.append(OrderedDate)
+# print(DatenMfinal)
+
 def Reykjavik_Fetch():
 
     Tk().withdraw()
@@ -15,8 +30,8 @@ def Reykjavik_Fetch():
     #Positionen=askopenfilename()
 
     #Deklariert 2D-Array für alle Zeitcodes in Mittelwerte und Daten in Mittelwerteq
-    ZeitM = [] #Monat, Tag, Stunde
-    DatenMfinal = [] #Monat, Tag
+    #ZeitM = [] #Monat, Tag, Stunde
+    #DatenMfinal = [] #Monat, Tag
     DatenM = [] #Monat, Tag mit duplikaten
     #Ordnet alle verfügbaren Zeicodes in Liste ZeitM ein
 
@@ -28,22 +43,8 @@ def Reykjavik_Fetch():
             Zeit = row[:3]
             DatenM.append(Zeit)
 
-
-        #print(DatenM)
-        DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
-
-        DatenMsortedList = [list(elem) for elem in DatenMsortedTuple] #Konvertiert die Liste aus Tupeln in eine Nested list
-        #print(DatenMsortedList)
-
-
-        for element in DatenMsortedList: #Reorganisiert die Nested List in Monat, Tag Format
-            a = element[1]
-            b = element[0]
-            OrderedDate = [a,b]
-            DatenMfinal.append(OrderedDate)
-        print(DatenMfinal)
-
-        return
+        print(DatenM)
+        return DatenM
 
 
 
