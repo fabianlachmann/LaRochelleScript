@@ -39,7 +39,7 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
             for i in range(len(Data)):
                 if Data[i][:3]==row[:3]:
                     for element in row:
-                        Data[i].append(row)
+                        Data[i].append(element)
 
     print(Data)
 
