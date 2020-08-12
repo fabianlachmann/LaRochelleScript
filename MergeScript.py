@@ -1,4 +1,7 @@
 import csv
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
 
 
 #noch nicht getestet
@@ -20,8 +23,8 @@ def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocation
 
 
 #noch nicht getestet
-def MergewithLaRochelle(inputfile,outputfile)#Input: str; Ouput: str
-    #Soll die Satelliten- und Postitionsdaten mit dem Mittelwertfiel mergen
+def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
+    #Soll die Satelliten- und Postitionsdaten mit dem Mittelwertfile mergen
     Data = []
 
     with open(outputfile) as output:  # öffnet das csv-file
@@ -29,23 +32,32 @@ def MergewithLaRochelle(inputfile,outputfile)#Input: str; Ouput: str
         for row in csv_reader:
             Data.append(row)
 
-    with open(inputfile) as input
+    with open(inputfile) as input:
         csv_reader = csv.reader(input,delimiter=',')
 
         for row in csv_reader:
             for i in range(len(Data)):
                 if Data[i][:3]==row[:3]:
-                    Data[i].append(row)
+                    for element in row:
+                        Data[i].append(row)
+
+    print(Data)
+
+    #with open(outputfile) as output:
+    #    csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    #    for row in Data:
+    #        csv_writer.writerow(row)
 
 
 
-    with open(outputfile) as output:
-        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        for row in Data:
-            csv_writer.writerow(row)
+
+Tk().withdraw()
 
 
+input = askopenfilename()
+output = askopenfilename()
 
+MergewithLaRochelle(input,output)
 
 
 
