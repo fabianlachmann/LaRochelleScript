@@ -1,5 +1,7 @@
 import csv
 
+
+#noch nicht getestet
 def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocations; Ouputfile als str mit directory
     with open(Outputfile, mode='a', newline='') as output:  # a steht für append
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -17,7 +19,7 @@ def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocation
 
 
 
-
+#noch nicht getestet
 def MergewithLaRochelle(inputfile,outputfile)#Input: str; Ouput: str
     #Soll die Satelliten- und Postitionsdaten mit dem Mittelwertfiel mergen
     Data = []
