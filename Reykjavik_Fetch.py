@@ -19,7 +19,7 @@ import itertools
 #    DatenMfinal.append(OrderedDate)
 # print(DatenMfinal)
 
-def Reykjavik_Fetch(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mit nur Zeit
+def Timecodes(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mit nur Zeit
 
     Tk().withdraw()
 

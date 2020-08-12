@@ -9,7 +9,7 @@ OutputFile_LaRochelle = ""
 API_keys = ""# wenn wir noch eine liste mit api-keys machen sollten
 
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)
-Glasgow_Fetch(Reykjavik_Fetch(OutputFile_LaRochelle))#Output als File oder Liste?
+Glasgow_Fetch(Timecodes(OutputFile_LaRochelle))#Output als File oder Liste?
 
 
 

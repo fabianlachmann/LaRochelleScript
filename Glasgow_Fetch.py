@@ -1,6 +1,7 @@
 import urllib.request as request
 import json
 import csv
+from MergeScript import *
 #
 def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
 

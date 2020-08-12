@@ -22,7 +22,7 @@ def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocation
 
 
 
-#noch nicht getestet
+#sollte funktionieren
 def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
     #Soll die Satelliten- und Postitionsdaten mit dem Mittelwertfile mergen
     Data = []
@@ -50,14 +50,15 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
 
 
 
+#---------------- für Test: -------------------
 
-Tk().withdraw()
+#Tk().withdraw()
 
 
-input = askopenfilename()
-output = askopenfilename()
+#input = askopenfilename()
+#output = askopenfilename()
 
-MergewithLaRochelle(input,output)
+#MergewithLaRochelle(input,output)
 
 
 
