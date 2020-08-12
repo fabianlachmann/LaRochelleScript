@@ -5,7 +5,7 @@ from tkinter.filedialog import askopenfilename
 #Welche Stelle für was steht hab ich aus dem CSV-File rausgelesen, könnte als teilweise nicht ganz stimmen
 
 
-def LaRochelle(directory,output):
+def LaRochelle(directory,output): #Input: filename für input- und output-file; Output: schreibt in output-file
     Tk().withdraw()
 
     # Zuerst wird nach der zu mittelenden Datei und dann nach der Output-location gefragt.

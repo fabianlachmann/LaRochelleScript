@@ -2,7 +2,7 @@ import urllib.request as request
 import json
 import csv
 #
-def Glasgow_Fetch(DatenM):
+def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
 
     for i in DatenM:
         Month = i[0]

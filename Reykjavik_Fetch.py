@@ -2,9 +2,9 @@ import csv
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 import itertools
-#yeet
 
 
+#alter Code, vllt braucht mans ja noch:
 # print(DatenM)
 # DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
 
@@ -19,7 +19,7 @@ import itertools
 #    DatenMfinal.append(OrderedDate)
 # print(DatenMfinal)
 
-def Reykjavik_Fetch(input):
+def Reykjavik_Fetch(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mit nur Zeit
 
     Tk().withdraw()
 
