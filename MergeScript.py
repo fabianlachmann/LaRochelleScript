@@ -15,3 +15,38 @@ def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocation
 
     return
 
+
+
+
+def MergewithLaRochelle(inputfile,outputfile)#Input: str; Ouput: str
+    #Soll die Satelliten- und Postitionsdaten mit dem Mittelwertfiel mergen
+    Data = []
+
+    with open(outputfile) as output:  # öffnet das csv-file
+        csv_reader = csv.reader(output, delimiter=',')
+        for row in csv_reader:
+            Data.append(row)
+
+    with open(inputfile) as input
+        csv_reader = csv.reader(input,delimiter=',')
+
+        for row in csv_reader:
+            for i in range(len(Data)):
+                if Data[i][:3]==row[:3]:
+                    Data[i].append(row)
+
+
+
+    with open(outputfile) as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for row in Data:
+            csv_writer.writerow(row)
+
+
+
+
+
+
+
+
+
