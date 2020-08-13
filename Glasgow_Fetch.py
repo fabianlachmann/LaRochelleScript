@@ -1,8 +1,9 @@
-import urllib.request as request
+import urllib
+from urllib.request import urlopen
 import json
 import csv
 from MergeScript import *
-#
+#run pip install requests in cmd before execution
 def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
 
     for i in DatenM:
@@ -66,32 +67,16 @@ def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
             if Monthadd < 10:
                 Monthadd = '0'+str(Monthadd)
 
-
-
-
-
-
-
-
         url = 'https://services.marinetraffic.com/api/exportvesseltrack/b07448715b200b24ccc79909b6cf721ba0f55d3d/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
-        with request.urlopen('http://data.nba.net/prod/v2/2018/teams.json') as response:
-            if response.getcode() == 200:
-                source = response.read()
-                data = json.loads(source)
-                print(data)
-            else:
-                print('An error occurred while attempting to retrieve data from the API.')
+
         print(url)
+        response = urlopen(url)
+        file = response.read()
+        print(file)
 
+        #print(data)
 
-
-
-
-
-
-
-
-Glasgow_Fetch([[6,1,23]])
+Glasgow_Fetch([[7,12,18]])
