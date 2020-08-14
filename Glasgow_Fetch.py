@@ -7,6 +7,7 @@ from MergeScript import *
 #run pip install requests in cmd before execution
 def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
 
+
     for i in DatenM:
         Month = i[0]
         Day = i[1]
@@ -74,8 +75,8 @@ def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
 
         print(url)
-        response = requests.get(url)
-        file = response.json()
+        response = requests.get(url) #habs jetzt mit der requests library gemacht
+        file = response.json()# sollte es in nen array oder so umwandeln
         print(file)
 
         #print(data)
