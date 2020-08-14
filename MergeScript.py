@@ -4,7 +4,7 @@ from tkinter.filedialog import askopenfilename
 
 
 
-#noch nicht getestet
+#sollte funktionieren
 def Merge(Inputfiles, Outputfile):#Inputfiles als Array von str mit filelocations; Ouputfile als str mit directory
     with open(Outputfile, mode='a', newline='') as output:  # a steht für append
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -56,13 +56,13 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
 
 #---------------- für Test: -------------------
 
-Tk().withdraw()
+#Tk().withdraw()
 
 
-input = askopenfilename()
-output = askopenfilename()
+#input = askopenfilename()
+#output = askopenfilename()
 
-MergewithLaRochelle(input,output)
+#Merge([input,output],output)
 
 
 
