@@ -1,10 +1,13 @@
-import urllib
-from urllib.request import urlopen
+#import urllib
+#from urllib.request import urlopen
 import requests
 import json
 import csv
 from MergeScript import *
+from tkinter import Tk
 #run pip install requests in cmd before execution
+
+
 def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
     data = []
 
@@ -84,13 +87,16 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
                 continue #sollte zur nächsten instanz des loops gehen
             elif response.status_code == 401:
                 print("not authenticated")
+                continue
             elif response.status_code == 404:
                 print("not found")
+                continue
             elif response.status_code == 403:
                 print("permission not correct")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
+                #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
 
 
-        file = response.json()# sollte die response in nen array oder so umwandeln
+        file = response.json()# sollte die response in nen 2d array oder so umwandeln
         print(file)
 
 
@@ -107,4 +113,6 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
             csv_writer.writerow(row)
 
 
-Glasgow_Fetch([[7,12,18]])
+Tk().withdraw()
+Dumpfile = askopenfilename()
+Glasgow_Fetch([[7,12,18]],Dumpfile)
