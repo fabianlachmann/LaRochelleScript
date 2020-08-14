@@ -38,27 +38,31 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
         for row in csv_reader:
             for i in range(len(Data)):
                 if Data[i][:3]==row[:3]:
-                    for element in row:
+                    for element in row[3:]:
                         Data[i].append(element)
 
-    print(Data)
+    #aufpassen
+    with open(outputfile,mode='w',newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for row in Data:
+            csv_writer.writerow(row)
 
-    #with open(outputfile) as output:
-    #    csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    #    for row in Data:
-    #        csv_writer.writerow(row)
+
+    return
+
+
 
 
 
 #---------------- für Test: -------------------
 
-#Tk().withdraw()
+Tk().withdraw()
 
 
-#input = askopenfilename()
-#output = askopenfilename()
+input = askopenfilename()
+output = askopenfilename()
 
-#MergewithLaRochelle(input,output)
+MergewithLaRochelle(input,output)
 
 
 
