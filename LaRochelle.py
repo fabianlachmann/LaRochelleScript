@@ -114,5 +114,6 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
 
             print(mittelwerte)
 
+    print("LaRochelle finished")
     return 1
 

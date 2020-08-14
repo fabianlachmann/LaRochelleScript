@@ -47,7 +47,7 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
         for row in Data:
             csv_writer.writerow(row)
 
-
+    print("Merge finished")
     return
 
 

@@ -19,6 +19,9 @@ ReykjavikDumpfile = ""
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)
 Glasgow_Fetch(Timecodes(OutputFile_LaRochelle),GlasgowDumpfile)
 Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile)
+MergewithLaRochelle(ReykjavikDumpfile,OutputFile_LaRochelle)
+
+print("finished")
 
 
 

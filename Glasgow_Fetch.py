@@ -86,14 +86,13 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
                 print("bad request")
                 continue #sollte zur nächsten instanz des loops gehen
             elif response.status_code == 401:
-                print("not authenticated")
-                continue
+                print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
+                #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
             elif response.status_code == 404:
                 print("not found")
                 continue
-            elif response.status_code == 403:
-                print("permission not correct")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
-                #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
+            else:
+                continue
 
 
         file = response.json()# sollte die response in nen 2d array oder so umwandeln
@@ -112,6 +111,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
         for row in data:
             csv_writer.writerow(row)
 
+    print("Glasgow finished")
 
 Tk().withdraw()
 Dumpfile = askopenfilename()

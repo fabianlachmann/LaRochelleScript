@@ -44,7 +44,9 @@ def Timecodes(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mi
             DatenM.append(Zeit)
 
         print(DatenM)
+        print("Timecodes finished")
         return DatenM
+
 
 
 
