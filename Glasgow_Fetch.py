@@ -1,5 +1,6 @@
 import urllib
 from urllib.request import urlopen
+import requests
 import json
 import csv
 from MergeScript import *
@@ -73,8 +74,8 @@ def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
 
         print(url)
-        response = urlopen(url)
-        file = response.read()
+        response = requests.get(url)
+        file = response.json()
         print(file)
 
         #print(data)
