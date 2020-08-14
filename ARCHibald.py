@@ -7,9 +7,10 @@ from MergeScript import *
 InputFile_LaRochelle = ""
 OutputFile_LaRochelle = ""
 API_keys = ""# wenn wir noch eine liste mit api-keys machen sollten
+GlasgowDumpfile = ""
 
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)
-Glasgow_Fetch(Timecodes(OutputFile_LaRochelle))#Output als File oder Liste?
+Glasgow_Fetch(Timecodes(OutputFile_LaRochelle),GlasgowDumpfile)#Output als File oder Liste?
 
 
 

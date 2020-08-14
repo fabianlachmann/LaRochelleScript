@@ -5,8 +5,8 @@ import json
 import csv
 from MergeScript import *
 #run pip install requests in cmd before execution
-def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
-
+def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
+    data = []
 
     for i in DatenM:
         Month = i[0]
@@ -76,9 +76,35 @@ def Glasgow_Fetch(DatenM):#Input: Liste mit Zeitangaben
 
         print(url)
         response = requests.get(url) #habs jetzt mit der requests library gemacht
-        file = response.json()# sollte es in nen array oder so umwandeln
+
+        if response.status_code !=200:
+            print("api-error occurred")
+            if response.status_code == 400:
+                print("bad request")
+                continue #sollte zur nächsten instanz des loops gehen
+            elif response.status_code == 401:
+                print("not authenticated")
+            elif response.status_code == 404:
+                print("not found")
+            elif response.status_code == 403:
+                print("permission not correct")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
+
+
+        file = response.json()# sollte die response in nen array oder so umwandeln
         print(file)
 
-        #print(data)
+
+        Daten = [Month,Day,Hour]
+        Daten.append(file[0][3])#LON
+        Daten.append(file[0][4])#LAT
+        data.append(Daten)
+    #print(data)
+
+
+    with open(GlasgowDumpfile, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for row in data:
+            csv_writer.writerow(row)
+
 
 Glasgow_Fetch([[7,12,18]])
