@@ -13,15 +13,17 @@ ReykjavikDumpfile = ""
 
 
 
+#potentielles problem: was passiert wenn ein eintrag in den rohdaten doppelt ist?
+
 
 # ----------------- MAIN ----------------------
 
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)
 Glasgow_Fetch(Timecodes(OutputFile_LaRochelle),GlasgowDumpfile)
-Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile)
+Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,TimecodesDays(OutputFile_LaRochelle))
 MergewithLaRochelle(ReykjavikDumpfile,OutputFile_LaRochelle)
 
-print("finished")
+print("ARCHibald finished")
 
 
 
