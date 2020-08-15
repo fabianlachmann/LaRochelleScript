@@ -1,5 +1,7 @@
 import requests
 import csv
+from tkinter.filedialog import askopenfilename
+
 import json
 
 
@@ -26,7 +28,8 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten):
 
         Longitude =
         Latitude =
-        key = ""
+
+        key = 'cbf99eb3a48741f8940134148200608'
         url ='http://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+key+'&'+'format=json'+\
             '&2020-'+str(Month)+'-'+str(Day)+'&q='+str(Longitude)+','+str(Latitude)
 
@@ -41,6 +44,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten):
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
+
             elif response.status_code == 404:
                 print("not found")
                 continue

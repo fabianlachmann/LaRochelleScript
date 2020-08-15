@@ -2,7 +2,6 @@
 #from urllib.request import urlopen
 import requests
 import json
-import csv
 from MergeScript import *
 from tkinter import Tk
 #run pip install requests in cmd before execution
