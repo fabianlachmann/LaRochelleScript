@@ -11,9 +11,9 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
     data = []
 
     for i in DatenM:
-        Month = i[0]
-        Day = i[1]
-        Hour = i[2]
+        Month = int(i[0])
+        Day = int(i[1])
+        Hour = int(i[2])
 
         Monthadd = 0
         Dayadd = 0
@@ -51,6 +51,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
             else:
                 Houradd = 0
                 Dayadd = Day + 1
+                Monthadd = Month
 
         else:
             Houradd = Hour + 1
@@ -59,17 +60,17 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
 
         if Hour < 10:
             Hour = '0'+str(Hour)
-            if Houradd < 10:
-                Houradd = '0'+str(Houradd)
-
+        if Houradd < 10:
+            Houradd = '0'+str(Houradd)
         if Day < 10:
             Day = '0'+str(Day)
-            if Dayadd < 10:
-                Dayadd = '0'+str(Dayadd)
+        if Dayadd < 10:
+            Dayadd = '0'+str(Dayadd)
         if Month < 10:
             Month = '0'+str(Month)
-            if Monthadd < 10:
-                Monthadd = '0'+str(Monthadd)
+        if Monthadd < 10:
+            Monthadd = '0'+str(Monthadd)
+
 
         url = 'https://services.marinetraffic.com/api/exportvesseltrack/b07448715b200b24ccc79909b6cf721ba0f55d3d/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
@@ -114,4 +115,4 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile):#Input: Liste mit Zeitangaben
 
 Tk().withdraw()
 Dumpfile = askopenfilename()
-Glasgow_Fetch([[7,12,18]],Dumpfile)
+Glasgow_Fetch([[7,31,23]],Dumpfile)
