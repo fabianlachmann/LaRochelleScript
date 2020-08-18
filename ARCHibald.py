@@ -13,7 +13,8 @@ ReykjavikDumpfile = ""
 
 
 
-#potentielles problem: was passiert wenn ein eintrag in den rohdaten doppelt ist?
+#potentielles problem: was passiert wenn ein eintrag in den rohdaten doppelt ist? -- Clang will be summoned and shall
+#consume all of reality
 
 
 # ----------------- MAIN ----------------------
