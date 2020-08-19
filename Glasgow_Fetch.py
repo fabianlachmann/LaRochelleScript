@@ -1,5 +1,3 @@
-#import urllib
-#from urllib.request import urlopen
 import requests
 import json
 from MergeScript import *
@@ -8,9 +6,9 @@ from tkinter import Tk
 
 def Keychange():
     APIKey = 'b07448715b200b24ccc79909b6cf721ba0f55d3d' #wird gelöscht wenn keylist besteht.
-    APIKeyList = ["b07448715b200b24ccc79909b6cf721ba0f55d3d"] #eleganter als Json oder csv file, aber geht auch so
+    APIKeyList = ["b07448715b200b24ccc79909b6cf721ba0f55d3d",''] #eleganter als Json oder csv file, aber geht auch so
     APIKey = APIKeyList[1]
-    APIKeyList.remove[1]
+    APIKeyList.remove[0]
     rem_Keys = len(APIKeyList)
     print(str(rem_Keys)+' keys remaining')
     return(APIKey)
@@ -18,11 +16,11 @@ def Keychange():
 
 def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
     data = []
-
-    for i in DatenM:
-        Month = int(i[0])
-        Day = int(i[1])
-        Hour = int(i[2])
+    i = 0
+    while i < len(DatenM)
+        Month = int(DatenM[i][0])
+        Day = int(DatenM[i][1])
+        Hour = int(DatenM[i][2])
 
         Monthadd = 0
         Dayadd = 0
@@ -81,6 +79,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
             Monthadd = '0'+str(Monthadd)
 
 
+
         url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKey)+'/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
@@ -97,7 +96,8 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
-                Keychange()
+                APIKey = Keychange()
+                i += -1 #dann gehts nochmal durch die schleife mit dem neuen key
                 continue
             elif response.status_code == 404:
                 print("not found")
@@ -126,4 +126,4 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
 
 Tk().withdraw()
 Dumpfile = askopenfilename()
-Glasgow_Fetch([[7,31,23]],Dumpfile)
+Glasgow_Fetch([[7,31,23]],Dumpfile,'b07448715b200b24ccc79909b6cf721ba0f55d3d')

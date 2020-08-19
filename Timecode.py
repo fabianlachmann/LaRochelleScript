@@ -4,21 +4,6 @@ from tkinter.filedialog import askopenfilename
 import itertools
 
 
-#alter Code, vllt braucht mans ja noch:
-# print(DatenM)
-# DatenMsortedTuple = list(set(tuple(sorted(sub)) for sub in DatenM)) #entfernt Duplikate
-
-# DatenMsortedList = [list(elem) for elem in DatenMsortedTuple] #Konvertiert die Liste aus Tupeln in eine Nested list
-# print(DatenMsortedList)
-
-
-# for element in DatenMsortedList: #Reorganisiert die Nested List in Monat, Tag Format
-#    a = element[1]
-#    b = element[0]
-#    OrderedDate = [a,b]
-#    DatenMfinal.append(OrderedDate)
-# print(DatenMfinal)
-
 def Timecodes(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mit nur Zeit
 
     Tk().withdraw()
@@ -27,14 +12,8 @@ def Timecodes(input): #Input: filename für Zeit(gemittelt); Output: 2D-Liste mi
     # timecode wie LaRochelle
 
     Mittelwerte = input
-    #Positionen=askopenfilename()
 
-    #Deklariert 2D-Array für alle Zeitcodes in Mittelwerte und Daten in Mittelwerteq
-    #ZeitM = [] #Monat, Tag, Stunde
-    #DatenMfinal = [] #Monat, Tag
-    DatenM = [] #Monat, Tag mit duplikaten
-    #Ordnet alle verfügbaren Zeicodes in Liste ZeitM ein
-
+    DatenM = []
 
     with open(Mittelwerte) as csv_file:  # öffnet das gemittelte csv-file mit den Longitude und Latitude Daten
         csv_reader = csv.reader(csv_file, delimiter=',')  # initialisiert den Reader fürs csv

@@ -15,7 +15,7 @@ ReykjavikDumpfile = ""
 
 #potentielles problem: was passiert wenn ein eintrag in den rohdaten doppelt ist? -- Clang will be summoned and shall
 #consume all of reality
-
+#All hail to Clang our eternal master
 
 # ----------------- MAIN ----------------------
 
