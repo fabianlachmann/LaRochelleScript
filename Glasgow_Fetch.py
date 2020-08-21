@@ -6,9 +6,9 @@ from tkinter import Tk
 
 def Keychange():
     APIKey = 'b07448715b200b24ccc79909b6cf721ba0f55d3d' #wird gelöscht wenn keylist besteht.
-    APIKeyList = ["b07448715b200b24ccc79909b6cf721ba0f55d3d",''] #eleganter als Json oder csv file, aber geht auch so
-    APIKey = APIKeyList[1]
-    APIKeyList.remove[0]
+    APIKeyListGlasgow = ["b07448715b200b24ccc79909b6cf721ba0f55d3d",''] #eleganter als Json oder csv file, aber geht auch so
+    APIKey = APIKeyListGlasgow[1]
+    APIKeyListGlasgow.remove[0]
     rem_Keys = len(APIKeyList)
     print(str(rem_Keys)+' keys remaining')
     return(APIKey)
