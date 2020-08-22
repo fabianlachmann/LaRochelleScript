@@ -8,9 +8,12 @@ from tkinter import Tk
 
 def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitangaben
     data = []
-    APIKey = APIKeyGlasgow[0]
     i = 0
+    n = 0
+    with open(APIKeyGlasgow) as csv_file:
+        APIKeyGlasgowList = csv.reader(csv_file, delimiter=',')
     while i < len(DatenM):
+        APIKey = APIKeyGlasgowList[n]
         Month = int(DatenM[i][0])
         Day = int(DatenM[i][1])
         Hour = int(DatenM[i][2])
@@ -90,6 +93,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
                 i += -1 #dann gehts nochmal durch die schleife mit dem neuen key
+                n += 1
                 continue
             elif response.status_code == 404:
                 print("not found")
@@ -113,6 +117,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for row in data:
             csv_writer.writerow(row)
+    with open
 
     print("Glasgow finished")
 
