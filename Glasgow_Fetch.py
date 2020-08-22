@@ -5,16 +5,15 @@ from tkinter import Tk
 #run pip install requests in cmd before execution
 
 def Keychange():
-    APIKey = 'b07448715b200b24ccc79909b6cf721ba0f55d3d' #wird gelöscht wenn keylist besteht.
     APIKeyListGlasgow = ["b07448715b200b24ccc79909b6cf721ba0f55d3d",''] #eleganter als Json oder csv file, aber geht auch so
     APIKey = APIKeyListGlasgow[1]
-    APIKeyListGlasgow.remove[0]
-    rem_Keys = len(APIKeyList)
+    APIKeyListGlasgow.remove(APIKeyListGlasgow[0])
+    rem_Keys = len(APIKeyListGlasgow)
     print(str(rem_Keys)+' keys remaining')
     return(APIKey)
 
 
-def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
+def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitangaben
     data = []
     i = 0
     while i < len(DatenM)
@@ -80,7 +79,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKey):#Input: Liste mit Zeitangaben
 
 
 
-        url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKey)+'/'+\
+        url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKeyGlasgow)+'/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
