@@ -132,6 +132,6 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
     print("Glasgow finished")
 
-Tk().withdraw()
-Dumpfile = askopenfilename()
-Glasgow_Fetch([[7,31,23]],Dumpfile,'b07448715b200b24ccc79909b6cf721ba0f55d3d')
+#Tk().withdraw()
+#Dumpfile = askopenfilename()
+#Glasgow_Fetch([[7,31,23]],Dumpfile,'b07448715b200b24ccc79909b6cf721ba0f55d3d')

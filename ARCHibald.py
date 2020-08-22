@@ -3,14 +3,24 @@ from Timecode import *
 from Glasgow_Fetch import *
 from MergeScript import *
 from Reykjavik_Fetch import *
+from pathlib import Path
+
+# `cwd`: current directory is straightforward
+cwd = Path.cwd()
+
+# `mod_path`: According to the accepted answer and combine with future power
+# if we are in the `helper_script.py`
+mod_path = Path(__file__).parent
+
+# `src_path`: with the future power, it's just so straightforward
 
 # hier werden die ganzen file-locations definiert
-InputFile_LaRochelle = ""
-OutputFile_LaRochelle = ""
-APIKeyGlasgow = ""# wenn wir noch eine liste mit api-keys machen sollten
-APIKeyReykjavik = ""
-GlasgowDumpfile = ""
-ReykjavikDumpfile = ""
+InputFile_LaRochelle = (mod_path / "Workingfiles/LaRochelleInput.CSV").resolve()
+OutputFile_LaRochelle =(mod_path / "Workingfiles/OutputLaRochelle.CSV").resolve()
+APIKeyGlasgow = "Workingfiles/APIKeyGlasgow.CSV"# wenn wir noch eine liste mit api-keys machen sollten
+APIKeyReykjavik = "Workingfiles/APIKeyReykjavik.CSV"
+GlasgowDumpfile = "Workingfiles/GlasgowDumpfile.CSV"
+ReykjavikDumpfile = "Workingfiles/ReykjavikDumpfile.CSV"
 
 
 

@@ -89,7 +89,8 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
 
 
-Tk().withdraw()
-Inputfile = askopenfilename()
-Dumpfile = askopenfilename()
-Reykjavik_Fetch(Inputfile,Dumpfile,[[7,16]],'cbf99eb3a48741f8940134148200608')
+#Tk().withdraw()
+#Inputfile = askopenfilename()
+#Dumpfile = askopenfilename()
+#print(Dumpfile)
+#Reykjavik_Fetch(Inputfile,Dumpfile,[[7,16]],'cbf99eb3a48741f8940134148200608')
