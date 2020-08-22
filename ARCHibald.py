@@ -19,7 +19,7 @@ ReykjavikDumpfile = ""
 
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)
 Glasgow_Fetch(Timecodes(OutputFile_LaRochelle),GlasgowDumpfile,APIKeyGlasgow)
-Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,TimecodesDays(OutputFile_LaRochelle),APIKeyReykjavik)
+Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,TimecodesDays(GlasgowDumpfile),APIKeyReykjavik)
 MergewithLaRochelle(ReykjavikDumpfile,OutputFile_LaRochelle)
 
 print("ARCHibald finished")
