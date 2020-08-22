@@ -8,10 +8,17 @@ from tkinter import Tk
 
 def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitangaben
     data = []
+    APIKeyGlasgowList = []
     i = 0
     n = 0
+
     with open(APIKeyGlasgow) as csv_file:
-        APIKeyGlasgowList = csv.reader(csv_file, delimiter=',')
+        row = next(csv.reader(csv_file, delimiter=','))
+        for key in row:
+            APIKeyGlasgowList.append(key)
+
+
+
     while i < len(DatenM):
         APIKey = APIKeyGlasgowList[n]
         Month = int(DatenM[i][0])
@@ -92,7 +99,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
-                i += -1 #dann gehts nochmal durch die schleife mit dem neuen key
+                #dann gehts nochmal durch die schleife mit dem neuen key
                 n += 1
                 continue
             elif response.status_code == 404:
@@ -119,9 +126,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
     APIKeyGlasgowList.remove(APIKeyGlasgowList[n])
     with open(APIKeyGlasgow, mode='w', newline='') as output:
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        APIKeyGlasgow.truncate()
-        for row in APIKeyGlasgowList:
-            csv_writer.writerow(row)
+        csv_writer.writerow(APIKeyGlasgowList)
 
 
     with open(GlasgowDumpfile, mode='w', newline='') as output:

@@ -10,17 +10,27 @@ import json
 def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
     data = []
+    APIKeyGlasgowList = []
+    n = 0
+    i=0
+
+    with open(APIKeyReykjavik) as csv_file:
+        row = next(csv.reader(csv_file, delimiter=','))
+        for key in row:
+            APIKeyGlasgowList.append(key)
+
+
 
     with open(GlasgowDumpfile) as csv_file:#öffnet das csv-file
         csv_reader = csv.reader(csv_file, delimiter=',') #initialisiert den Reader fürs csv
         for row in csv_reader:
             data.append(row)
 
-    for i in data:
+    while i < len(data):
 
-        Month = int(i[0])
-        Day = int(i[1])
-        Hour = int(i[2])
+        Month = int(data[i][0])
+        Day = int(data[i][1])
+        Hour = int(data[i][2])
 
 
         if Day < 10:
@@ -29,8 +39,8 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
         if Month < 10:
             Month = '0' + str(Month)
 
-        Longitude = float(i[3])
-        Latitude = float(i[4])
+        Longitude = float(data[i][3])
+        Latitude = float(data[i][4])
 
         #APIkeyReykjavik = 'cbf99eb3a48741f8940134148200608'
         url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIKeyReykjavik+'&'+'format=json'+\
@@ -43,16 +53,17 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
             print("api-error occurred")
             if response.status_code == 400:
                 print("bad request")
-                #continue #sollte zur nächsten instanz des loops gehen
+                continue #sollte zur nächsten instanz des loops gehen
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
-
+                n+=1
+                continue
             elif response.status_code == 404:
                 print("not found")
-                #continue
+                continue
             else:
-                #continue
+                continue
                 print("s")
 
 
@@ -62,7 +73,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
 
 
-        i.append(file['data']['weather'][0]['hourly'][Hour]['tempC'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['tempC'])
         i.append(file['data']['weather'][0]['hourly'][Hour]['windspeedKmph'])
         i.append(file['data']['weather'][0]['hourly'][Hour]['precipMM'])
         i.append(file['data']['weather'][0]['hourly'][Hour]['humidity'])
@@ -75,6 +86,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
         i.append(file['data']['weather'][0]['hourly'][Hour]['swellHeight_m'])
         i.append(file['data']['weather'][0]['hourly'][Hour]['waterTemp_C'])
 
+        i+=1
 
     print(data)
 
