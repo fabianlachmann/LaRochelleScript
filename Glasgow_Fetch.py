@@ -13,11 +13,12 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
     n = 0
 
     with open(APIKeyGlasgow) as csv_file:
-        row = next(csv.reader(csv_file, delimiter=','))
-        for key in row:
-            APIKeyGlasgowList.append(key)
+        row = csv.reader(csv_file, delimiter=',')
+        for row1 in row:
+            for key in row1:
+                APIKeyGlasgowList.append(key)
 
-
+    print(APIKeyGlasgowList)
 
     while i < len(DatenM):
         APIKey = APIKeyGlasgowList[n]
@@ -123,10 +124,10 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
     #print(data)
 
-    APIKeyGlasgowList.remove(APIKeyGlasgowList[n])
+
     with open(APIKeyGlasgow, mode='w', newline='') as output:
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csv_writer.writerow(APIKeyGlasgowList)
+        csv_writer.writerow(APIKeyGlasgowList[n:])
 
 
     with open(GlasgowDumpfile, mode='w', newline='') as output:

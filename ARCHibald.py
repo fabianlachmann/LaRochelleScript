@@ -7,12 +7,12 @@ from pathlib import Path
 from Cleanup import *
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
-Tk.withdraw()
 
 
 
 cwd = Path.cwd()
 mod_path = Path(__file__).parent
+
 
 # hier werden die ganzen file-locations definiert
 InputFile_LaRochelle = (mod_path / "Workingfiles/LaRochelleInput.CSV").resolve()
@@ -21,6 +21,7 @@ APIKeyGlasgow =(mod_path /  "Workingfiles/APIKeyGlasgow.CSV").resolve()# wenn wi
 APIKeyReykjavik = (mod_path /  "Workingfiles/APIKeyReykjavik.CSV").resolve()
 GlasgowDumpfile = (mod_path /  "Workingfiles/GlasgowDumpfile.CSV").resolve()
 ReykjavikDumpfile = (mod_path /  "Workingfiles/ReykjavikDumpfile.CSV").resolve()
+Tk().withdraw()
 Output = askopenfilename()
 
 

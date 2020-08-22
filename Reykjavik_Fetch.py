@@ -10,14 +10,14 @@ import json
 def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
     data = []
-    APIKeyGlasgowList = []
+    APIKeyReykjavikList = []
     n = 0
     i=0
 
     with open(APIKeyReykjavik) as csv_file:
         row = next(csv.reader(csv_file, delimiter=','))
         for key in row:
-            APIKeyGlasgowList.append(key)
+            APIKeyReykjavikList.append(key)
 
 
 
@@ -27,7 +27,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
             data.append(row)
 
     while i < len(data):
-
+        APIKey = APIKeyReykjavikList[n]
         Month = int(data[i][0])
         Day = int(data[i][1])
         Hour = int(data[i][2])
@@ -43,7 +43,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
         Latitude = float(data[i][4])
 
         #APIkeyReykjavik = 'cbf99eb3a48741f8940134148200608'
-        url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIKeyReykjavik+'&'+'format=json'+\
+        url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIKey+'&'+'format=json'+\
             '&date=2020-'+str(Month)+'-'+str(Day)+'&q='+str(Longitude)+','+str(Latitude)
 
         print(url)
@@ -64,31 +64,36 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
                 continue
             else:
                 continue
-                print("s")
 
 
-        file = response.json()#
+
+        file = response.json()
         print(file)
         print(type(file))
 
 
 
         data[i].append(file['data']['weather'][0]['hourly'][Hour]['tempC'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['windspeedKmph'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['precipMM'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['humidity'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['visibility'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['pressure'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['cloudcover'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['HeatIndexC'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['DewPointC'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['sigHeight_m'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['swellHeight_m'])
-        i.append(file['data']['weather'][0]['hourly'][Hour]['waterTemp_C'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['windspeedKmph'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['precipMM'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['humidity'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['visibility'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['pressure'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['cloudcover'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['HeatIndexC'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['DewPointC'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['sigHeight_m'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['swellHeight_m'])
+        data[i].append(file['data']['weather'][0]['hourly'][Hour]['waterTemp_C'])
 
         i+=1
 
     print(data)
+
+
+    with open(APIKeyReykjavik, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        csv_writer.writerow(APIKeyReykjavikList[n:])
 
 
     with open(ReykjavikDumpfile, mode='w', newline='') as output:
