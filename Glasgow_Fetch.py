@@ -112,12 +112,19 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
         data.append(Daten)
     #print(data)
 
+    APIKeyGlasgowList.remove(APIKeyGlasgowList[n])
+    with open(APIKeyGlasgow, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        APIKeyGlasgow.truncate()
+        for row in APIKeyGlasgowList:
+            csv_writer.writerow(row)
+
 
     with open(GlasgowDumpfile, mode='w', newline='') as output:
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for row in data:
             csv_writer.writerow(row)
-    with open
+
 
     print("Glasgow finished")
 
