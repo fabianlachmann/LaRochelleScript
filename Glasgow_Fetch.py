@@ -4,19 +4,13 @@ from MergeScript import *
 from tkinter import Tk
 #run pip install requests in cmd before execution
 
-def Keychange():
-    APIKeyListGlasgow = ["b07448715b200b24ccc79909b6cf721ba0f55d3d",''] #eleganter als Json oder csv file, aber geht auch so
-    APIKey = APIKeyListGlasgow[1]
-    APIKeyListGlasgow.remove(APIKeyListGlasgow[0])
-    rem_Keys = len(APIKeyListGlasgow)
-    print(str(rem_Keys)+' keys remaining')
-    return(APIKey)
 
 
 def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitangaben
     data = []
+    APIKey = APIKeyGlasgow[0]
     i = 0
-    while i < len(DatenM)
+    while i < len(DatenM):
         Month = int(DatenM[i][0])
         Day = int(DatenM[i][1])
         Hour = int(DatenM[i][2])
@@ -79,7 +73,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
 
 
-        url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKeyGlasgow)+'/'+\
+        url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKey)+'/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
@@ -95,7 +89,6 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
-                APIKey = Keychange()
                 i += -1 #dann gehts nochmal durch die schleife mit dem neuen key
                 continue
             elif response.status_code == 404:

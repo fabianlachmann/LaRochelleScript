@@ -7,7 +7,7 @@ import json
 
 #under construction
 #problem töglich vs stündlich position
-def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIkeyReykjavik):
+def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
     data = []
 
     with open(GlasgowDumpfile) as csv_file:#öffnet das csv-file
@@ -32,7 +32,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIkeyReykjavik):
     Latitude = float(i[4])
 
     #APIkeyReykjavik = 'cbf99eb3a48741f8940134148200608'
-    url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIkeyReykjavik+'&'+'format=json'+\
+    url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIKeyReykjavik+'&'+'format=json'+\
         '&date=2020-'+str(Month)+'-'+str(Day)+'&q='+str(Longitude)+','+str(Latitude)
 
     print(url)
