@@ -82,7 +82,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
 
         print(url)
-        response = requests.get(url) #habs jetzt mit der requests library gemacht
+        response = requests.get(url)
 
         if response.status_code !=200:
             print("api-error occurred")
@@ -110,6 +110,10 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
         Daten.append(file[0][3])#LON
         Daten.append(file[0][4])#LAT
         data.append(Daten)
+
+        i+=1
+        #end of loop
+
     #print(data)
 
     APIKeyGlasgowList.remove(APIKeyGlasgowList[n])

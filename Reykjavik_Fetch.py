@@ -20,6 +20,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
     i = data[0]
     Month = int(i[0])
     Day = int(i[1])
+    Hour = int(i[2])
 
 
     if Day < 10:
@@ -57,8 +58,13 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
     file = response.json()#
     print(file)
+    print(file['data']['weather'][0]['hourly'][Hour]['tempC'])
     print(type(file))
 
+    #Daten = [Month, Day, Hour]
+    #Daten.append(file[])  # LON
+    #Daten.append(file[0][4])  # LAT
+    #data.append(Daten)
 
     #print(data)
 
@@ -76,4 +82,4 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 Tk().withdraw()
 Inputfile = askopenfilename()
 Dumpfile = askopenfilename()
-Reykjavik_Fetch(Inputfile,Dumpfile,[[7,16]])
+Reykjavik_Fetch(Inputfile,Dumpfile,[[7,16]],'cbf99eb3a48741f8940134148200608')
