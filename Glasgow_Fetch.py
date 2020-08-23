@@ -2,16 +2,25 @@ import requests
 import json
 from MergeScript import *
 from tkinter import Tk
+import time
 #run pip install requests in cmd before execution
 
 
 
 def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitangaben
     data = []
+    APIKeyGlasgowList = []
     i = 0
     n = 0
+
     with open(APIKeyGlasgow) as csv_file:
-        APIKeyGlasgowList = csv.reader(csv_file, delimiter=',')
+        row = csv.reader(csv_file, delimiter=',')
+        for row1 in row:
+            for key in row1:
+                APIKeyGlasgowList.append(key)
+
+    print(APIKeyGlasgowList)
+
     while i < len(DatenM):
         APIKey = APIKeyGlasgowList[n]
         Month = int(DatenM[i][0])
@@ -82,17 +91,19 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
 
         print(url)
+        time.sleep(2)
         response = requests.get(url)
 
         if response.status_code !=200:
             print("api-error occurred")
+            print(response.status_code)
             if response.status_code == 400:
                 print("bad request")
                 continue #sollte zur nächsten instanz des loops gehen
             elif response.status_code == 401:
                 print("not authenticated")# möglicherweise wird das getriggert wenn der api-key keine credits mehr hat
                 #hier sollt das API-key handling hinkommen, und dann mit nem goto wieder dahin wo url definiert wird
-                i += -1 #dann gehts nochmal durch die schleife mit dem neuen key
+                #dann gehts nochmal durch die schleife mit dem neuen key
                 n += 1
                 continue
             elif response.status_code == 404:
@@ -116,12 +127,10 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
     #print(data)
 
-    APIKeyGlasgowList.remove(APIKeyGlasgowList[n])
+
     with open(APIKeyGlasgow, mode='w', newline='') as output:
         csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        APIKeyGlasgow.truncate()
-        for row in APIKeyGlasgowList:
-            csv_writer.writerow(row)
+        csv_writer.writerow(APIKeyGlasgowList[n:])
 
 
     with open(GlasgowDumpfile, mode='w', newline='') as output:
