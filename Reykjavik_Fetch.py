@@ -51,6 +51,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
         if response.status_code !=200:
             print("api-error occurred")
+            print(response.status_code)
             if response.status_code == 400:
                 print("bad request")
                 continue #sollte zur nächsten instanz des loops gehen

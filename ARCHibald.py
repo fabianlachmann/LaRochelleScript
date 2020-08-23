@@ -22,10 +22,10 @@ APIKeyReykjavik = (mod_path /  "Workingfiles/APIKeyReykjavik.CSV").resolve()
 GlasgowDumpfile = (mod_path /  "Workingfiles/GlasgowDumpfile.CSV").resolve()
 ReykjavikDumpfile = (mod_path /  "Workingfiles/ReykjavikDumpfile.CSV").resolve()
 Tk().withdraw()
-Output = askopenfilename()
+Output = 'C:/Users/User/Desktop/Test2.CSV'
 
 
-
+print(Output)
 # ----------------- MAIN ----------------------
 
 LaRochelle(InputFile_LaRochelle,OutputFile_LaRochelle)

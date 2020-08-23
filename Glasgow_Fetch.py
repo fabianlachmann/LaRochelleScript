@@ -2,6 +2,7 @@ import requests
 import json
 from MergeScript import *
 from tkinter import Tk
+import time
 #run pip install requests in cmd before execution
 
 
@@ -90,10 +91,12 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
               +str(Houradd)+':00:00/mmsi:269266000/protocol:json'
 
         print(url)
+        time.sleep(2)
         response = requests.get(url)
 
         if response.status_code !=200:
             print("api-error occurred")
+            print(response.status_code)
             if response.status_code == 400:
                 print("bad request")
                 continue #sollte zur nächsten instanz des loops gehen
