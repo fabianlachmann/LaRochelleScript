@@ -37,9 +37,10 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
 
         for row in csv_reader:
             for i in range(len(Data)):
-                if Data[i][:3]==row[:3]:
+                if int(Data[i][0])==int(row[0]) and int(Data[i][1]) == int(row[1]) and int(Data[i][2])==int(row[2]):
                     for element in row[3:]:
                         Data[i].append(element)
+
 
     #aufpassen
     with open(outputfile,mode='w',newline='') as output:
@@ -62,7 +63,7 @@ def MergewithLaRochelle(inputfile,outputfile):#Input: str; Ouput: str
 #input = askopenfilename()
 #output = askopenfilename()
 
-#Merge([input,output],output)
+#MergewithLaRochelle(input,output)
 
 
 

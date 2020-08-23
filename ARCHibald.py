@@ -15,14 +15,14 @@ mod_path = Path(__file__).parent
 
 
 # hier werden die ganzen file-locations definiert
-InputFile_LaRochelle = (mod_path / "Workingfiles/LaRochelleInput.CSV").resolve()
+InputFile_LaRochelle = askopenfilename()#(mod_path / "Workingfiles/LaRochelleInput.CSV").resolve()
 OutputFile_LaRochelle =(mod_path / "Workingfiles/OutputLaRochelle.CSV").resolve()
 APIKeyGlasgow =(mod_path /  "Workingfiles/APIKeyGlasgow.CSV").resolve()# wenn wir noch eine liste mit api-keys machen sollten
 APIKeyReykjavik = (mod_path /  "Workingfiles/APIKeyReykjavik.CSV").resolve()
 GlasgowDumpfile = (mod_path /  "Workingfiles/GlasgowDumpfile.CSV").resolve()
 ReykjavikDumpfile = (mod_path /  "Workingfiles/ReykjavikDumpfile.CSV").resolve()
 Tk().withdraw()
-Output = 'C:/Users/User/Desktop/Test2.CSV'
+Output = askopenfilename()
 
 
 print(Output)
