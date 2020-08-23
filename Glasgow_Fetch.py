@@ -84,7 +84,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
             Monthadd = '0'+str(Monthadd)
 
 
-
+        print("url")
         url = 'https://services.marinetraffic.com/api/exportvesseltrack/'+str(APIKey)+'/'+\
               'v:2/period:hourly/fromdate:2020-'+str(Month)+'-'+str(Day)+' '+str(Hour)+':00:00/todate:2020-'\
               +str(Monthadd)+'-'+str(Dayadd)+' '\
@@ -92,7 +92,9 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
         print(url)
         time.sleep(2)
+        print("sleep")
         response = requests.get(url)
+        print("request successful")
 
         if response.status_code !=200:
             print("api-error occurred")
