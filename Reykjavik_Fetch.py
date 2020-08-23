@@ -44,7 +44,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
 
         #APIkeyReykjavik = 'cbf99eb3a48741f8940134148200608'
         url ='https://api.worldweatheronline.com/premium/v1/past-marine.ashx?'+'key='+APIKey+'&'+'format=json'+\
-            '&date=2020-'+str(Month)+'-'+str(Day)+'&q='+str(Longitude)+','+str(Latitude)
+            '&date=2020-'+str(Month)+'-'+str(Day)+'&q='+str(Latitude)+','+str(Longitude)
 
         print(url)
         try:
