@@ -5,8 +5,12 @@ from tkinter.filedialog import askopenfilename
 def Cleanup(OutputFile_LaRochelle,GlasgowDumpfile,ReykjavikDumpfile,Output):
     Tk().withdraw()
 
-    GlasgowDumpfile.truncate(0)
-    ReykjavikDumpfile.truncate(0)
+    with open(GlasgowDumpfile, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+
+    with open(ReykjavikDumpfile, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
 
     with open(OutputFile_LaRochelle) as csv_file:#öffnet das csv-file
@@ -16,7 +20,9 @@ def Cleanup(OutputFile_LaRochelle,GlasgowDumpfile,ReykjavikDumpfile,Output):
             for row in csv_reader:
                 resultatewriter.writerow(row)
 
-    OutputFile_LaRochelle.truncate(0)
+    with open(OutputFile_LaRochelle, mode='w', newline='') as output:
+        csv_writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
 
 
 #def CorrectInput():

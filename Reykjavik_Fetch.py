@@ -47,7 +47,10 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
             '&date=2020-'+str(Month)+'-'+str(Day)+'&q='+str(Longitude)+','+str(Latitude)
 
         print(url)
-        response = requests.get(url) #habs jetzt mit der requests library gemacht
+        try:
+            response = requests.get(url,timeout= 20) #habs jetzt mit der requests library gemacht
+        except TimeoutError:
+            continue
 
         if response.status_code !=200:
             print("api-error occurred")

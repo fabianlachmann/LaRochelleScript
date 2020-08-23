@@ -93,7 +93,11 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
         print(url)
         time.sleep(2)
         print("sleep")
-        response = requests.get(url)
+        try:
+            response = requests.get(url,timeout=10)
+        except TimeoutError:
+            continue
+
         print("request successful")
 
         if response.status_code !=200:
