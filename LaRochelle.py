@@ -66,7 +66,7 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
 
 
                 for i in range(len(werte)):
-                    mittelwerte[i+3]= (werte[i]/(line_count))*avg_messungszeit
+                    mittelwerte[i+3]= (werte[i]/(line_count*avg_messungszeit))
                     werte[i] = 0 # für nächste Stunde
 
                 with open(output, mode='a',newline='') as resultate: #a steht für append
