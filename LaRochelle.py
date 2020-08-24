@@ -8,6 +8,8 @@ from tkinter.filedialog import askopenfilename
 def LaRochelle(directory,output): #Input: filename für input- und output-file; Output: schreibt in output-file
     Tk().withdraw()
 
+    Messgrössen = [[0.38,0.54],[0.54,0.78],[0.78,1],[1,1.3],[1.3,1.6],[1.6,2.1],[2.1,3],[3,4],[4,5],[5,6.5],[6.5,8],[8,10],[10,12],[12,14],[14,16]]
+
     # Zuerst wird nach der zu mittelenden Datei und dann nach der Output-location gefragt.
     #directory = askopenfilename()
     #output = askopenfilename()
@@ -105,7 +107,7 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
             mittelwerte[2] = stunde
 
             for i in range(len(werte)):
-                mittelwerte[i+3]= (werte[i]/line_count)*avg_messungszeit
+                mittelwerte[i+3]= (werte[i]/(line_count*avg_messungszeit))
 
 
             with open(output,mode='a',newline='') as resultate:
