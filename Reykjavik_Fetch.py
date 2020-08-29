@@ -26,6 +26,9 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
         for row in csv_reader:
             data.append(row)
 
+    if data == [[]]:
+        return
+
     while i < len(data):
         APIKey = APIKeyReykjavikList[n]
         Month = int(data[i][0])
