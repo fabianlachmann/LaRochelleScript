@@ -49,7 +49,7 @@ def Reykjavik_Fetch(GlasgowDumpfile,ReykjavikDumpfile,Daten,APIKeyReykjavik):
         print(url)
         try:
             response = requests.get(url,timeout= 20) #habs jetzt mit der requests library gemacht
-        except requests.exceptions.Timeout
+        except requests.exceptions.Timeout:
             continue
 
         if response.status_code !=200:
