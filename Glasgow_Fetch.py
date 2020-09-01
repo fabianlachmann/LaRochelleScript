@@ -95,6 +95,7 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
         print("sleep")
         try:
             response = requests.get(url,timeout=30)
+            print("response")
         except requests.exceptions.Timeout:
             continue
 
@@ -124,8 +125,12 @@ def Glasgow_Fetch(DatenM,GlasgowDumpfile,APIKeyGlasgow):#Input: Liste mit Zeitan
 
 
         Daten = [Month,Day,Hour]
-        Daten.append(file[0][3])#LON
-        Daten.append(file[0][4])#LAT
+        if file == []:
+            Daten.append(data[len(data)-1][3])#LON
+            Daten.append(data[len(data)-1][4])#LAT
+        else:
+            Daten.append(file[0][3])#LON
+            Daten.append(file[0][4])#LAT
         data.append(Daten)
 
         i+=1
