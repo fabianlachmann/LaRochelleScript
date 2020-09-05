@@ -21,11 +21,11 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
         csv_reader = csv.reader(csv_file, delimiter=',') #initialisiert den Reader fürs csv
         line_count = 0 # zählt wie viele Messungen es pro stunde gab
 
-        werte = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]  # liste, in der die werte addiert werden, länge = 16
+        werte = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]  # liste, in der die werte addiert werden, länge = 16
         messungszeit = 0 # messungszeit wird hier addiert und dann am ende für den avg durch line_count geteilt
         flowrate = 0 # flowrate wird hier addiert und dann am ende für den avg durch line_count geteilt
 
-        mittelwerte = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] #0,1,2: Monat,Tag,Stunde 4-19: Mittelwerte Anz Teilchen 20,21: Avg Messungszeit, Avg Flowrate
+        mittelwerte = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] #0,1,2: Monat,Tag,Stunde 4-19: Mittelwerte Anz Teilchen 20,21: Avg Messungszeit, Avg Flowrate
 
         notnullcond =0
 
@@ -57,13 +57,15 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
                 flowrate = 0 #für nächste Stunde
                 messungszeit = 0 #für nächste Stunde
 
-                mittelwerte[19] = avg_messungszeit
-                mittelwerte[20] = avg_flowrate
+                mittelwerte[22] = avg_messungszeit
+                mittelwerte[23] = avg_flowrate
 
-                mittelwerte[21] = line_count
+                mittelwerte[24] = line_count
                 mittelwerte[0] = monat # damit wird dem Mittelwert ein Datum zugewiesen
                 mittelwerte[1] = tag
                 mittelwerte[2] = stunde
+                print(avg_messungszeit)
+                print(mittelwerte[22])
 
 
 
@@ -79,7 +81,7 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
                 line_count = 0 # damit es nur pro Stunde zählt
 
 
-            for i in range(len(werte)): # Werten der row werden in die liste addiert und für flowrate und messungszeit korriegiert
+            for i in range(len(werte)-3): # Werten der row werden in die liste addiert und für flowrate und messungszeit korriegiert
                 if (float(row[25])) == 0:
                     continue
 
@@ -89,6 +91,16 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
             messungszeit += float(row[24])
             flowrate += float(row[25])
 
+            for i in range(3):
+                if (float(row[25]))==0:
+                    continue
+
+                werte[i+len(werte)-3] += float(row[26+i])*float(row[24])
+
+
+
+
+
 
 
 
@@ -97,10 +109,10 @@ def LaRochelle(directory,output): #Input: filename für input- und output-file; 
             avg_messungszeit = messungszeit/line_count
             avg_flowrate = flowrate/line_count
 
-            mittelwerte[19] = avg_messungszeit
-            mittelwerte[20] = avg_flowrate
+            mittelwerte[22] = avg_messungszeit
+            mittelwerte[23] = avg_flowrate
 
-            mittelwerte[21] = line_count
+            mittelwerte[24] = line_count
 
             mittelwerte[0] = monat # damit wird dem Mittelwert ein Datum zugewiesen
             mittelwerte[1] = tag
